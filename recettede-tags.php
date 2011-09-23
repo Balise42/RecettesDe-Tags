@@ -25,6 +25,20 @@ Copyright 2011 Isabelle Hurbain-Palatin  (email : isabelle@palatin.fr)
 
 add_action('add_meta_boxes', 'add_recettes_box');
 add_action('save_post', 'save_recettes_tags');
+add_action('rss2_item', 'add_recettes_tags_rss');
+
+function add_recettes_tags_rss(){
+  $recettetags = get_post_meta(get_the_ID(), 'recettes-de-tags', true );
+  if (!empty($recettetags)){
+    $tagsarr = explode(",", $recettetags);
+    foreach($tagsarr as $tagrec){
+      $tagrecclean = trim($tagrec);
+      $reclink = str_replace(" ", "-", $tagrecclean);
+      echo "<category domain='recettede'><![CDATA[<a href='http://recettes.de/" . $reclink . "'>" . $tagrecclean. "</a>]]></category>";
+    }
+    echo $after;
+  }
+}
 
 function add_recettes_box (){
   add_meta_box('recettemeta', "Tags 'recette.de/cuisine'", 'recettes_box_display', 'post');
@@ -68,4 +82,3 @@ function the_recettes_tags($before, $after) {
 
 }
 ?>
-
