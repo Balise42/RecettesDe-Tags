@@ -4,8 +4,8 @@ English
 This is a Wordpress plugin to add tags for http://recettes.de, a French directory of culinary blogs.
 
 To install: 
-Download the archive of the current MASTER, located at https://github.com/Balise42/RecettesDe-Tags/zipball/master
-Put the content in your wp-plugins directory. The tree looks as follows: wp-plugins > RecettesDe-Tags > recettesde-tags.php
+Download the archive, located at https://github.com/downloads/Balise42/RecettesDe-Tags/recettesde-tags-0.1.zip
+Decompress it and put the content in your wp-plugins directory. The tree looks as follows: wp-plugins > recettesde-tags > recettesde-tags.php
 Add in the single.php file of your theme a reference to the "the_recettes_tags" function ; for instance, put after the regular Wordpress tags the following code:
 
 <?php if (function_exists("the_recettes_tags")) {
@@ -16,7 +16,24 @@ Add in the single.php file of your theme a reference to the "the_recettes_tags" 
 The first argument is the text/HTML code leading the tags, the second one is the text/HTML to put after the tags.
 
 Activate the plugin, you should be all set!
-A new field appears in the post editing interface where you can add tags as you want them to be displayed, separated by commas.
+A new field appears in the post editing interface where you can add tags as you want them to be displayed, separated by commas. The correponding link is automatically created
 
-French
-======
+Français
+========
+
+Ceci est un plugin Wordpress pour ajouter des tags pour http://recettes.de, un annuaire de blogs culinaires francophones.
+
+Pour installer :
+Téléchargez l'archive, disponible à l'adresse https://github.com/downloads/Balise42/RecettesDe-Tags/recettesde-tags-0.1.zip
+Décompressez-la et placez son contenu dans le répertoire wp-plugins. L'arborescence ressemble à ceci : wp-plugins > recettesde-tags > recettesde-tags.php
+Azoutez dans le fichier single.php de votre thème une référence à la fonction "the_recettes_tags" ; par exemple, ajoutez ce qui suit après l'affichage des tags Wordpress usuels :
+
+<?php if (function_exists("the_recettes_tags")) {
+  the_recettes_tags('<p>Tags <a href="http://recettes.de/cuisine">Recettes de Cuisine</a> : ', '</p>');
+}
+?>
+
+Le premier argument est le texte/code HTML introduisant les tags ; le second est le texte/HTML à ajouter après les tags.
+
+Activez le plugin et ça devrait fonctionner !
+Un nouveau champ apparaît dans l'interface de modification des billets ; ajoutez-y les tags tels que vous souhaitez qu'ils s'affichent, séparés par des virgules. Le lien correspondant est créé automatiquement.
