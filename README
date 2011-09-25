@@ -1,0 +1,22 @@
+English
+=======
+
+This is a Wordpress plugin to add tags for http://recettes.de, a French directory of culinary blogs.
+
+To install: 
+Download the archive of the current MASTER, located at https://github.com/Balise42/RecettesDe-Tags/zipball/master
+Put the content in your wp-plugins directory. The tree looks as follows: wp-plugins > RecettesDe-Tags > recettesde-tags.php
+Add in the single.php file of your theme a reference to the "the_recettes_tags" function ; for instance, put after the regular Wordpress tags the following code:
+
+<?php if (function_exists("the_recettes_tags")) {
+  the_recettes_tags('<p>Tags <a href="http://recettes.de/cuisine">Recettes de Cuisine</a> : ', '</p>'); 
+}
+?>
+
+The first argument is the text/HTML code leading the tags, the second one is the text/HTML to put after the tags.
+
+Activate the plugin, you should be all set!
+A new field appears in the post editing interface where you can add tags as you want them to be displayed, separated by commas.
+
+French
+======
