@@ -55,16 +55,20 @@ function save_recettes_tags($post_id){
 }
 
 function the_recettes_tags($before, $after) {
+  $beforev = wp_kses_post($before);
+  $afterv = wp_kses_post($after);
   $recettetags = get_post_meta(get_the_ID(), 'recettes-de-tags', true );
   if (!empty($recettetags)){
-    echo $before;
+    echo $beforev;
     $tagsarr = explode(",", $recettetags);
     foreach($tagsarr as $tagrec){
       $tagrecclean = trim($tagrec);
-      $reclink = str_replace(" ", "-", $tagrecclean);
+      $toreplace = array(" ", "&#039;", "à", "â", "é", "è", "ê", "ë", "î", "ï", "ô", "û", "ù");
+      $replacements = array("-", "-", "a", "a", "e", "e", "e", "e", "i", "i", "o", "u", "u");
+      $reclink = str_replace($toreplace, $replacements, $tagrecclean);
       echo "<a href='http://recettes.de/" . $reclink . "'>" . $tagrecclean. "</a> ";
     }
-    echo $after;
+    echo $afterv;
   }
 
 }
